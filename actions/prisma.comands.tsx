@@ -1,0 +1,1 @@
+const updateschema = 'npx prisma db push';

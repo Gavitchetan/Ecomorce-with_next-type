@@ -1,0 +1,121 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("server")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+// id String @db.ObjectId @default((auto())) @map("_id")
+model Product {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    name        String
+    brand       String
+    description String
+    price       Float
+    inStock     Boolean
+    images      Image[]
+    reviews     Review[]
+    category    String
+}
+
+model Review {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    userId    String   @db.ObjectId
+    productId String?  @db.ObjectId
+    rating    Int
+    comment   String
+    cretedAt  DateTime @default(now())
+
+    Product Product? @relation(fields: [productId], references: [id])
+    User    User     @relation(fields: [userId], references: [id])
+}
+
+model Account {
+    id                String  @id @default(auto()) @map("_id") @db.ObjectId
+    userId            String  @db.ObjectId
+    type              String
+    provider          String
+    providerAccountId String
+    refresh_token     String? @db.String
+    access_token      String? @db.String
+    expires_at        Int?
+    token_type        String?
+    scope             String?
+    id_token          String? @db.String
+    session_state     String?
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@unique([provider, providerAccountId])
+}
+
+model User {
+    id             String    @id @default(auto()) @map("_id") @db.ObjectId
+    name           String?
+    email          String?   @unique
+    emailVerified  DateTime?
+    image          String?
+    hashedPassword String?
+    createdAt      DateTime  @default(now())
+    updatedAt      DateTime  @updatedAt
+    accounts       Account[]
+    Role           Role      @default(user)
+    Orders         Order[]
+    // orders Order
+    Review         Review[]
+}
+
+model Order {
+    id              String         @id @default(auto()) @map("_id") @db.ObjectId
+    userId          String         @db.ObjectId
+    amount          Float
+    currency        String
+    state           String
+    status          String
+    deliveryStatus  String?
+    createdAt       DateTime       @default(now())
+    paymentIntentId String         @unique
+    products        CartProducts[]
+    address         Address?
+    user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+type CartProducts {
+    id          String
+    name        String
+    description String
+    category    String
+    brand       String
+    selectedImg Image
+    qauntity    Int
+    price       Float
+}
+
+type Image {
+    color     String
+    colorCode String
+    image     String
+}
+
+type Address {
+    pin         Int
+    city        String
+    country     String
+    line1       String
+    line2       String
+    postel_code String
+    state       String
+    Near        String?
+}
+
+enum Status {
+    Pending
+    Paid
+}
+
+enum Role {
+    user
+    admin
+}

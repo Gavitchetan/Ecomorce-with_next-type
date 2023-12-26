@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600;700&family=Josefin+Sans:wght@300;400;500;600&family=Poppins:wght@200;300;400;500;600&family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+    font-family: 'Edu TAS Beginner', cursive;
+    font-family: 'Josefin Sans', sans-serif;
+    box-sizing: border-box;
+    // overflow-x: hidden;
+}
+
+.pnh {
+    font-family: Edu TAS Beginner;
+    font-weight: 600;
+    // background-color: #ff0000;
+
+}
