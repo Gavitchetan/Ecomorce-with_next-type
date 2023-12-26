@@ -73,7 +73,7 @@ const OrderDetails: FC<OrderProps> = ({ orders }) => {
                 </div>
                 {
                     orders?.products && orders.products.map((item, index) => (
-                        <OrItems item={item ? item : null} />
+                        <OrItems key={item.brand} item={item ? item : null} />
                         // <div className=""></div>
                     ))
                 }
