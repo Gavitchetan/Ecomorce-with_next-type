@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'; // Change 'next/navigation' to 'next/ro
 import React from 'react';
 import { CiShoppingCart } from 'react-icons/ci';
 
-const useCarCount = () => {
+const CarCount = () => {
     const router = useRouter();
     const { cartTotalqty, cartTotalAmount } = usecart();
 
@@ -18,4 +18,5 @@ const useCarCount = () => {
     );
 };
 
-export default useCarCount;
+export default CarCount;
+
