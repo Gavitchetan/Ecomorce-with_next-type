@@ -190,15 +190,15 @@ const Addproudctform = () => {
         <Fragment>
 
             <Headings title='Add A Product' center />
-            <Input errors={errors} register={register} label='Name' required={true} id='name' disabled={isLoading} />
-            <Input errors={errors} register={register} label='price' required={true} id='price' type='number' disabled={isLoading} />
+            <Input key={Math.random()}  errors={errors} register={register} label='Name' required={true} id='name' disabled={isLoading} />
+            <Input key={Math.random()} errors={errors} register={register} label='price' required={true} id='price' type='number' disabled={isLoading} />
 
-            <Input errors={errors} register={register} label='brand' required={true} id='brand' disabled={isLoading} />
+            <Input key={Math.random()} errors={errors} register={register} label='brand' required={true} id='brand' disabled={isLoading} />
 
-            <Textarea id='description' errors={errors} register={register} label='description' required={true} disabled={isLoading} />
+            <Textarea key={Math.random()} id='description' errors={errors} register={register} label='description' required={true} disabled={isLoading} />
 
 
-            <CustomcheckBox id='inStock' label='Instock' register={register} disabled={isLoading} />
+            <CustomcheckBox key={Math.random()} id='inStock' label='Instock' register={register} disabled={isLoading} />
 
 
             <div className=" mt-8 w-full font-medium">
@@ -229,7 +229,7 @@ const Addproudctform = () => {
                     {
                         colors.map((item, index) => (
                             // <div className="">{item.color}</div>
-                            <SetColor key={item.color} isProductCreted={false} item={item} addImgeTostate={addImageTostate} removeImgFromState={removEImgFromState} />
+                            <SetColor key={item.color} isProductCreated={false} item={item} addImgeToState={addImageTostate} removeImgFromState={removEImgFromState} />
                         ))
                     }
                 </div>

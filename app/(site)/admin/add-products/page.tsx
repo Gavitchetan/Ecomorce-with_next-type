@@ -14,7 +14,7 @@ const page = async () => {
     return (
         <div className=' p-8'>
             <Conteainer>
-                <ProductForm />
+                <ProductForm key={Math.random()} />
             </Conteainer>
         </div>
     )

@@ -5,14 +5,14 @@ import React, { FC, useCallback, useEffect, useState } from 'react';
 import SelectedImg from './SelectImgType';
 import Button from '@/app/components/products/Button';
 
-interface SelectColorProps {
+interface selectColorProps {
     item: ImgeType;
     addImgeToState: (value: ImgeType) => void;
     removeImgFromState: (value: ImgeType) => void;
     isProductCreated: boolean;
 }
 
-const SetColors: FC<SelectColorProps> = ({ item, addImgeToState, removeImgFromState, isProductCreated }) => {
+const SetColors: FC<selectColorProps> = ({ item, addImgeToState, removeImgFromState, isProductCreated }) => {
     const [isSelected, setSelected] = useState<boolean>(false);
     const [files, setFiles] = useState<File | null>(null);
 
