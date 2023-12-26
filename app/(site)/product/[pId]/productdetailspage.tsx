@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import Conteainer from '@/app/components/Conteainer';
 import { AiFillAccountBook } from "react-icons/ai";
 import { BsCart } from "react-icons/bs";
